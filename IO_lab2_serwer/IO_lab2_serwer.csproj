@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EE7458C8-C24C-491E-8C12-6F9FE5C1FC59}</ProjectGuid>
+    <ProjectGuid>{47A9F838-D22A-4C58-B697-70800B65647E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>IO_lab2</RootNamespace>
-    <AssemblyName>IO_lab2</AssemblyName>
+    <RootNamespace>IO_lab2_serwer</RootNamespace>
+    <AssemblyName>IO_lab2_serwer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,13 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ServerEcho.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServerEchoAPM.cs" />
-    <Compile Include="ServerEchoSync.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServerEchoLib\ServerEchoLib.csproj">
+      <Project>{fe09036a-ef6c-47aa-b8c8-2e4157106293}</Project>
+      <Name>ServerEchoLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
