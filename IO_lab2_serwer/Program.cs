@@ -22,6 +22,7 @@ namespace IO_lab2_serwer
                 Console.WriteLine(e.Message);
             }
             server.Start();
+            
         }
     }
 }

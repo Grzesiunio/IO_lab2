@@ -45,15 +45,47 @@ namespace ServerEchoLib
                 TransmissionDataDelegate transmissionDelegate = new TransmissionDataDelegate(BeginDataTransmission);
 
                 //callback style
-
+                
                 transmissionDelegate.BeginInvoke(Stream, TransmissionCallback, tcpClient);
 
                 // async result style
 
                 //IAsyncResult result = transmissionDelegate.BeginInvoke(Stream, null, null);
+                buffer = new byte[Buffer_size];
+                byte[] buffer_read_stream = new byte[Buffer_size];
+                string a = "Podaj nazwe uzytkownika";
+                string b = "Podaj haslo uzytkownika kot";
+                string dobre_haslo = "Podales dobre haslo, zalogowales sie do systemu";
+                string uzytkownik = "kot";
+                string haslo = "pies";
+                byte[] buffer1 = Encoding.ASCII.GetBytes(a);
+                byte[] buffer2 = Encoding.ASCII.GetBytes(b);
+                byte[] buffer_haslo = Encoding.ASCII.GetBytes(dobre_haslo);
+                int message_size = Stream.Read(buffer, 0, Buffer_size);
+
+                string wiadomosc = Encoding.UTF8.GetString(buffer, 0, message_size);
+
+                if (wiadomosc == uzytkownik)
+                {
+                    Stream.Write(buffer2, 0, buffer2.Length);
+                    buffer = new byte[Buffer_size];
+                    message_size = Stream.Read(buffer, 0, Buffer_size);
+                    Stream.Write(buffer, 0, message_size);
+                    wiadomosc = Encoding.UTF8.GetString(buffer, 0, message_size);
+                    Console.WriteLine(wiadomosc);
+                    if (wiadomosc == haslo)
+                    {
+                        Stream.Write(buffer_haslo, 0, buffer_haslo.Length);
+                    }
+                    else
+                    {
+
+                    }
+
+                }
 
                 ////operacje......
-                
+
 
                 //while (!result.IsCompleted) ;
 
